@@ -48,7 +48,7 @@ public class StreamLabController {
     }
     
     @GetMapping("/problemSix")
-    public List<User> ProblemSix() {
+    public List<User> ProblemSix() throws ParseException {
     	return service.ProblemSix();
     }
     

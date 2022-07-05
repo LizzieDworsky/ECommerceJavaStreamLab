@@ -75,12 +75,17 @@ public class StreamLabService {
         return users.findAll().stream().filter(u -> u.getRegistrationDate().compareTo(date) < 0).toList();
     }
 
-    public List<User> ProblemSix()
-    {
-        // Write a query that gets all of the users who registered AFTER 2016 and BEFORE 2018
+    public List<User> ProblemSix() throws ParseException {
+        // Write a query that gets all the users who registered AFTER 2016 and BEFORE 2018
         // Return the list
 
-        return null;
+        String afterDateString = "01-01-2016";
+        String beforeDateString = "01-01-2018";
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date afterDate = formatter.parse(afterDateString);
+        Date beforeDate = formatter.parse(beforeDateString);
+
+        return users.findAll().stream().filter(u -> u.getRegistrationDate().compareTo(afterDate) > 0).filter(u -> u.getRegistrationDate().compareTo(beforeDate) <0).toList();
     }
 
     // <><><><><><><><> R Actions (Read) with Foreign Keys <><><><><><><><><>
