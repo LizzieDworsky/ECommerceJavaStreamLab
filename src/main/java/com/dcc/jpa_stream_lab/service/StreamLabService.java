@@ -1,5 +1,8 @@
 package com.dcc.jpa_stream_lab.service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -58,14 +61,18 @@ public class StreamLabService {
     	return products.findAll().stream().filter(p -> p.getName().contains("s")).toList();
     }
 
-    public List<User> ProblemFive()
-    {
-        // Write a query that gets all of the users who registered BEFORE 2016
+    public List<User> ProblemFive() throws ParseException {
+        // Write a query that gets all the users who registered BEFORE 2016
         // Return the list
         // Research 'java compare dates'
-        // You may need to use the helper classes imported above!
-    	
-        return null;
+        // You may need to use the helper classes imported above!+
+//        Date compareDate = new Date(2016, Calendar.JANUARY, 01) ;
+
+        String dateString = "01-01-2016";
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = formatter.parse(dateString);
+
+        return users.findAll().stream().filter(u -> u.getRegistrationDate().compareTo(date) < 0).toList();
     }
 
     public List<User> ProblemSix()
