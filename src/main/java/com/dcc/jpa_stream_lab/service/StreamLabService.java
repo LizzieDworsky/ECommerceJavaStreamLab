@@ -1,13 +1,10 @@
 package com.dcc.jpa_stream_lab.service;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -104,7 +101,11 @@ public class StreamLabService {
         // Write a query that retrieves all of the products in the shopping cart of the user who has the email "afton@gmail.com".
         // Return the list
 
-    	return null;
+        User userAfton = users.findAll().stream().filter(u -> u.getEmail().equals("afton@gmail.com")).findFirst().orElse(null);         //Find the user first
+        assert userAfton != null;
+        List<ShoppingcartItem> cartItems = userAfton.getShoppingcartItems();
+//        cartItems.stream().map(i -> i.getProduct()).toList();
+        return cartItems.stream().map(ShoppingcartItem::getProduct).toList();                                                                //shorthand method reference, replaces lambda function
     }
 
     public long ProblemNine()
@@ -112,6 +113,13 @@ public class StreamLabService {
         // Write a query that retrieves all of the products in the shopping cart of the user who has the email "oda@gmail.com" and returns the sum of all of the products prices.
     	// Remember to break the problem down and take it one step at a time!
 
+//        Find the user
+
+//        Get the user's cart items
+
+//        get the products in the cart
+
+//        add the price of each products for the total (.map)
 
     	return 0;
 
