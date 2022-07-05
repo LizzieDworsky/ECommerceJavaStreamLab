@@ -130,6 +130,18 @@ public class StreamLabService {
         // Write a query that retrieves all of the products in the shopping cart of users who have the role of "Employee".
     	// Return the list
 
+//        Find users who are employees
+//        Role employeeRole = roles.findAll().stream().filter(r -> r.getName().equals("Employee")).findFirst().orElse(null);
+//        assert employeeRole != null;
+//        List<User> employees = users.findAll().stream().filter(u -> u.getRoles().contains(employeeRole)).toList();
+////        iterate over to find cart items
+//        List<Product> cartContents = {};
+//        for(User e: employees){
+//            List<ShoppingcartItem> cart = e.getShoppingcartItems();
+//            // get the products in the carts
+//            cartContents.add(cart.stream().map(ShoppingcartItem::getProduct).toList()) ;
+//        }
+
     	return null;
     }
 
@@ -151,9 +163,13 @@ public class StreamLabService {
     {
         // Create a new Product object and add that product to the Products table.
         // Return the product
-    	
+        Product newProduct = new Product();
+        newProduct.setDescription("All-in-one portable PC gaming");
+        newProduct.setName("Valve Steam Deck");
+        newProduct.setPrice(529);
+        products.save(newProduct);
 
-    	return null;
+    	return newProduct;
 
     }
 
