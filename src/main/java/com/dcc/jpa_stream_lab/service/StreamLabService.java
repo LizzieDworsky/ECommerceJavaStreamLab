@@ -114,14 +114,14 @@ public class StreamLabService {
     	// Remember to break the problem down and take it one step at a time!
 
 //        Find the user
-
+        User userOda = users.findAll().stream().filter(u -> u.getEmail().equals("oda@gmail.com")).findFirst().orElse(null);
+        assert userOda != null;
 //        Get the user's cart items
-
+        List<ShoppingcartItem> cart = userOda.getShoppingcartItems();
 //        get the products in the cart
-
-//        add the price of each products for the total (.map)
-
-    	return 0;
+        List<Product> cartContents = cart.stream().map(ShoppingcartItem::getProduct).toList();
+//        add the price of each product for the total
+        return cartContents.stream().map(Product::getPrice).reduce(0, Integer::sum);
 
     }
 
