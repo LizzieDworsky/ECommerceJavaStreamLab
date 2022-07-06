@@ -107,6 +107,9 @@ public class StreamLabController {
     	return service.ProblemSeventeen();
     }
     
-
+    @DeleteMapping("/problemEighteen")
+    public User ProblemEighteen(){
+        return service.ProblemEighteen();
+    }
     
 }

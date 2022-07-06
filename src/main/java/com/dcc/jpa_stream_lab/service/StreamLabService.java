@@ -232,7 +232,24 @@ public class StreamLabService {
     	return user;
     }
 
-    
+    public User ProblemEighteen()
+    {
+        //Eighteen
+        //Delete the role relationship from the user who has the email "oda@gmail.com"
+
+        User user = users.findAll().stream().filter(u -> u.getEmail().equals("oda@gmail.com")).findFirst().orElse(null);
+        Role customerRole = roles.findAll().stream().filter(r -> r.getName().equals("Customer")).findFirst().orElse(null);
+        user.removeRole(customerRole);
+
+        return user;
+    }
+
+
+    //Nineteen
+    //Delete all shopping cart items from the user "oda@gmail.com"
+
+    //Twenty
+    //Delete the "oda@gmail.com" user
     
 	
 
