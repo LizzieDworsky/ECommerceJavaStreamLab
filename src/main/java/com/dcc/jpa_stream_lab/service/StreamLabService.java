@@ -209,7 +209,11 @@ public class StreamLabService {
     {
         // Update the price of the product you created to a different value.
         // Return the updated product
-    	return null;
+        Product steamDeck = products.findAll().stream().filter(p -> p.getName().equals("Valve Steam Deck")).findFirst().orElse(null);
+        assert steamDeck != null;
+        steamDeck.setPrice(399);
+
+    	return steamDeck;
     }
 
     public User ProblemSeventeen()
