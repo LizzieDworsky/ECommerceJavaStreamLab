@@ -183,10 +183,15 @@ public class StreamLabService {
     	// Create a new ShoppingCartItem to represent the new product you created being added to the new User you created's shopping cart.
         // Add the product you created to the user we created in the ShoppingCart junction table.
         // Return the ShoppingcartItem
+        Product steamDeck = products.findAll().stream().filter(p -> p.getName().equals("Valve Steam Deck")).findFirst().orElse(null);
+        User david = users.findAll().stream().filter(u -> u.getEmail().equals("david@gmail.com")).findFirst().orElse(null);
+        ShoppingcartItem newShoppingCartItem = new ShoppingcartItem();
+        newShoppingCartItem.setProduct(steamDeck);
+        newShoppingCartItem.setUser(david);
+        newShoppingCartItem.setQuantity(2);
+        shoppingcartitems.save(newShoppingCartItem);
 
-
-
-    	return null;
+    	return newShoppingCartItem;
     	
     }
 
