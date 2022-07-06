@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -131,18 +132,13 @@ public class StreamLabService {
     	// Return the list
 
 //        Find users who are employees
-//        Role employeeRole = roles.findAll().stream().filter(r -> r.getName().equals("Employee")).findFirst().orElse(null);
-//        assert employeeRole != null;
-//        List<User> employees = users.findAll().stream().filter(u -> u.getRoles().contains(employeeRole)).toList();
-////        iterate over to find cart items
-//        List<Product> cartContents = {};
-//        for(User e: employees){
-//            List<ShoppingcartItem> cart = e.getShoppingcartItems();
-//            // get the products in the carts
-//            cartContents.add(cart.stream().map(ShoppingcartItem::getProduct).toList()) ;
-//        }
-
-    	return null;
+        Role employeeRole = roles.findAll().stream().filter(r -> r.getName().equals("Employee")).findFirst().orElse(null);
+        assert employeeRole != null;
+        List<User> employees = users.findAll().stream().filter(u -> u.getRoles().contains(employeeRole)).toList();
+//        iterate over to find cart items
+        List<List <ShoppingcartItem>> listCart = employees.stream().map(User::getShoppingcartItems).toList();
+        List<ShoppingcartItem> cart = listCart.stream().flatMap(List::stream).toList();
+        return cart.stream().map(ShoppingcartItem::getProduct).toList();
     }
 
     // <><><><><><><><> CUD (Create, Update, Delete) Actions <><><><><><><><><>
@@ -187,6 +183,8 @@ public class StreamLabService {
     	// Create a new ShoppingCartItem to represent the new product you created being added to the new User you created's shopping cart.
         // Add the product you created to the user we created in the ShoppingCart junction table.
         // Return the ShoppingcartItem
+
+
 
     	return null;
     	
