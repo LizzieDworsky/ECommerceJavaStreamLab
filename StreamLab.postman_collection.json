@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "00007686-5900-4706-a2df-e3a9036c6057",
+		"_postman_id": "6372e40b-f743-466f-a774-9670648f8a92",
 		"name": "StreamLab",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "13455599"
+		"_exporter_id": "21116298"
 	},
 	"item": [
 		{
@@ -183,14 +183,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/problemNine",
+					"raw": "http://localhost:8080/problemTen",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"problemNine"
+						"problemTen"
 					]
 				}
 			},
